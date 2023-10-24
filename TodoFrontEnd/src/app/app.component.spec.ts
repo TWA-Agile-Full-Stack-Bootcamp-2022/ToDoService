@@ -9,10 +9,11 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { CommonModule } from '@angular/common';
 import { CreateTodoitemComponent } from './create-todoitem/create-todoitem.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule.withRoutes(routes), ReactiveFormsModule],
+    imports: [RouterTestingModule.withRoutes(routes), ReactiveFormsModule, HttpClientTestingModule],
     declarations: [AppComponent, TodoListComponent, TodoDetailComponent, CreateTodoitemComponent]
   }).compileComponents());
 

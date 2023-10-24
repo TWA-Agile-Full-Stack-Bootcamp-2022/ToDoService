@@ -4,10 +4,15 @@ import { CreateTodoitemComponent } from './create-todoitem.component';
 import { TodoService } from '../service/todo.service';
 import { ToDoItem } from '../model/TodoItem';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClient } from '@angular/common/http';
+import { TodoHttpService } from '../service/todo-http.service';
+import { HtmlParser } from '@angular/compiler';
 
 describe('CreateTodoitemComponent', () => {
   let component: CreateTodoitemComponent;
   let fixture: ComponentFixture<CreateTodoitemComponent>;
+  let httpTestingController: HttpTestingController;
 
   let todoServiceStub: Partial<TodoService> = {
     todoItems: [],
@@ -18,16 +23,25 @@ describe('CreateTodoitemComponent', () => {
   }
 
   beforeEach(() => {
+
+
     TestBed.configureTestingModule({
       declarations: [CreateTodoitemComponent],
-      providers: [{provide: TodoService, useValue: todoServiceStub}],
-      imports: [ReactiveFormsModule]
+      providers: [
+        { provide: TodoService, useValue: todoServiceStub },
+        TodoHttpService
+      ],
+      imports: [ReactiveFormsModule, HttpClientTestingModule]
     });
     fixture = TestBed.createComponent(CreateTodoitemComponent);
     component = fixture.componentInstance;
+    httpTestingController = TestBed.inject(HttpTestingController);
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    httpTestingController.verify();
+  })
   it('should create', () => {
     expect(component).toBeTruthy();
   });
@@ -39,10 +53,9 @@ describe('CreateTodoitemComponent', () => {
 
     // Act
     component.onSubmit();
-    const todoService = fixture.debugElement.injector.get(TodoService);
 
     // Assert
-    expect(todoService.todoItems.length).toBe(1);
-    expect(todoService.todoItems[0]).toEqual(new ToDoItem(1, 'Buy Milk', 'Buy some Milk', false));
+    const req = httpTestingController.expectOne('https://localhost:5001/ToDoItem');
+    expect(req.request.method).toEqual('POST');
   })
 });
