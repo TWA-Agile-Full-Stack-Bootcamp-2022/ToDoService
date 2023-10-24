@@ -7,11 +7,13 @@ import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { By } from '@angular/platform-browser';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { CommonModule } from '@angular/common';
+import { CreateTodoitemComponent } from './create-todoitem/create-todoitem.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule.withRoutes(routes)],
-    declarations: [AppComponent, TodoListComponent, TodoDetailComponent]
+    imports: [RouterTestingModule.withRoutes(routes), ReactiveFormsModule],
+    declarations: [AppComponent, TodoListComponent, TodoDetailComponent, CreateTodoitemComponent]
   }).compileComponents());
 
   it('should create the app', () => {

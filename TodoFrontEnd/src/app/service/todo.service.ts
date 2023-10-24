@@ -5,7 +5,7 @@ import { ToDoItem } from '../model/TodoItem';
   providedIn: 'root'
 })
 export class TodoService {
-  private todoItems: ToDoItem[];
+  todoItems: ToDoItem[];
 
   constructor() {
     this.todoItems = [
@@ -23,5 +23,11 @@ export class TodoService {
     if (todoItem) {
       todoItem.isDone = isDone;
     }
+  }
+
+  public create(title: string, description: string) {
+    const id = this.todoItems.length + 1;
+    const todoItem = new ToDoItem(id, title, description, false);
+    this.todoItems.push(todoItem);
   }
 }
