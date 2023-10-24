@@ -1,1 +1,19 @@
-<p>todo-list works!</p>
+<h2>Todo List</h2>
+<Table>
+  <tr>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>IsDone</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let todoItem of todoItems">
+    <td>{{todoItem.id}}</td>
+    <td>{{todoItem.title}}</td>
+    <td>{{todoItem.description}}</td>
+    <td>{{todoItem.isDone}}</td>
+    <td>
+      <button (click)="onUpdateTodo(todoItem.id, true)">Done</button>
+    </td>
+  </tr>
+</Table>
