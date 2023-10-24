@@ -8,7 +8,7 @@ export const routes: Routes = [
     path: '', component: TodoListComponent,
   },
   {
-    path: 'detail', component: TodoDetailComponent
+    path: 'detail/:id', component: TodoDetailComponent
   }
 ];
 

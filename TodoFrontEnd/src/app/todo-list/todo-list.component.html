@@ -14,6 +14,7 @@
     <td>{{todoItem.isDone}}</td>
     <td>
       <button (click)="onUpdateTodo(todoItem.id, true)">Done</button>
+      <button (click)="onGotoDetail(todoItem.id)">view detail</button>
     </td>
   </tr>
 </Table>

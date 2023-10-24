@@ -30,4 +30,8 @@ export class TodoService {
     const todoItem = new ToDoItem(id, title, description, false);
     this.todoItems.push(todoItem);
   }
+
+  public getById(id: number): ToDoItem | undefined {
+    return this.todoItems.find(todo => todo.id === id);
+  }
 }

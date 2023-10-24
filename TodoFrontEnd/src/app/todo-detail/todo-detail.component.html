@@ -1,1 +1,15 @@
-<p>todo-detail works!</p>
+<h2>Todo item detail</h2>
+<div *ngIf="todoItem">
+  <div>
+    <span>title:</span>
+    <span>{{todoItem.title}}</span>
+  </div>
+  <div>
+    <span>description:</span>
+    <span>{{todoItem.description}}</span>
+  </div>
+  <div>
+    <span>isDone</span>
+    <span>{{todoItem.description}}</span>
+  </div>
+</div>

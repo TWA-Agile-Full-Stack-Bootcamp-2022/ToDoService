@@ -45,7 +45,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     const harness = await RouterTestingHarness.create()
-    await harness.navigateByUrl('/detail')
+    await harness.navigateByUrl('/detail/1')
     fixture.detectChanges()
 
     const component = fixture.debugElement.queryAll(By.directive(TodoDetailComponent))
