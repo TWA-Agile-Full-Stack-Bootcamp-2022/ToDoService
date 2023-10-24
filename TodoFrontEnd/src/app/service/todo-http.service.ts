@@ -23,4 +23,9 @@ export class TodoHttpService {
   public update(item: ToDoItem) {
     return this.http.put<ToDoItem>(`https://localhost:5001/ToDoItem`, item);
   }
+
+  public getById(id: number) {
+    return this.http.get<ToDoItem>(`https://localhost:5001/ToDoItem/${id}`);
+  }
+
 }

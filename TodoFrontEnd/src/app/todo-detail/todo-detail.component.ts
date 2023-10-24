@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ToDoItem } from '../model/TodoItem';
 import { ActivatedRoute } from '@angular/router';
 import { TodoService } from '../service/todo.service';
+import { TodoHttpService } from '../service/todo-http.service';
 
 @Component({
   selector: 'app-todo-detail',
@@ -13,13 +14,17 @@ export class TodoDetailComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private todoService: TodoService
+    private todoService: TodoService,
+    private todoHttpService: TodoHttpService
   ) {
   }
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     const id = Number(routeParams.get('id'));
-    this.todoItem = this.todoService.getById(id);
+    // this.todoItem = this.todoService.getById(id);
+    this.todoHttpService.getById(id).subscribe(todoItem => {
+      this.todoItem = todoItem;
+    })
   }
 }

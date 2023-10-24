@@ -63,4 +63,18 @@ describe('TodoHttpService', () => {
     }})
     expect(httpClientSpy.put.calls.count()).toBe(1);
   })
+
+  it('should get todoItem by id', () => {
+    httpClientSpy.get.and.returnValue(asyncData({
+      "id": 0,
+      "title": "Home work",
+      "description": "Have to complete home work",
+      "isDone": false
+    }));
+
+    service.getById(0).subscribe({next: data => {
+      expect(data.title).toBe('Home work');
+    }})
+    expect(httpClientSpy.get.calls.count()).toBe(1);
+  })
 });
