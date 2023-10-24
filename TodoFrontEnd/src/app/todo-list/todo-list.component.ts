@@ -30,7 +30,13 @@ export class TodoListComponent {
   }
 
   onUpdateTodo(id: number, isDone: boolean) {
-    this.todoService.update(id, isDone);
+    const item = this.todoItems.find(todo => todo.id === id);
+    if (item) {
+      item.isDone = true;
+      this.todoHttpService.update(item).subscribe(() => {
+        this.refreshList()
+      })
+    }
   }
 
   onGotoDetail(id: number) {

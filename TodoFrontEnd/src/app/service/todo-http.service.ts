@@ -19,4 +19,8 @@ export class TodoHttpService {
     const todoItem = new ToDoItem(0, title, description, false);
     return this.http.post<ToDoItem>('https://localhost:5001/ToDoItem', todoItem);
   }
+
+  public update(item: ToDoItem) {
+    return this.http.put<ToDoItem>(`https://localhost:5001/ToDoItem`, item);
+  }
 }
