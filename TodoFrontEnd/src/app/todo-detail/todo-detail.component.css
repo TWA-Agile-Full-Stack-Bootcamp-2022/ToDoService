@@ -1,0 +1,8 @@
+.todo-item {
+  & > div {
+    margin: 8px 0;
+  }
+}
+span + span {
+  margin-left: 20px;
+}

@@ -1,0 +1,23 @@
+<h2>Todo List</h2>
+<Table>
+  <tr>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>IsDone</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let todoItem of todoItems">
+    <td>{{todoItem.id}}</td>
+    <td>{{todoItem.title}}</td>
+    <td>{{todoItem.description}}</td>
+    <td>{{todoItem.isDone}}</td>
+    <td>
+      <button (click)="onUpdateTodo(todoItem.id, true)">Done</button>
+      <button (click)="onGotoDetail(todoItem.id)">view detail</button>
+      <button (click)="onDelete(todoItem.id)">Delete</button>
+    </td>
+  </tr>
+</Table>
+
+<app-create-todoitem (created)="refreshList()"></app-create-todoitem>

@@ -63,7 +63,7 @@ namespace ToDoService.Controllers
             var foundToDoItem = toDoItems.FirstOrDefault(item => item.Id == todoItem.Id);
             if (foundToDoItem != null)
             {
-                foundToDoItem.IsDone = true;
+                foundToDoItem.IsDone = todoItem.IsDone;
                 foundToDoItem.Description = todoItem.Description;
                 foundToDoItem.Title = todoItem.Title;
             }
