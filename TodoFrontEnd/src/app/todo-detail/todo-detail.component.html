@@ -9,7 +9,14 @@
     <span>{{todoItem.description}}</span>
   </div>
   <div>
-    <span>isDone</span>
-    <span>{{todoItem.description}}</span>
+    <span>isDone:</span>
+    <span>{{todoItem.isDone}}</span>
   </div>
 </div>
+
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="title" />
+  <input type="text" formControlName="description" />
+  <input type="checkbox" formControlName="isDone" />
+  <button type="submit">update</button>
+</form>

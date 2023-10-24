@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TodoDetailComponent } from './todo-detail.component';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('TodoDetailComponent', () => {
   let component: TodoDetailComponent;
@@ -12,7 +13,7 @@ describe('TodoDetailComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TodoDetailComponent],
       providers: [{provide: ActivatedRoute, useValue: {snapshot: {paramMap: {get: () => 1}}}}],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule, ReactiveFormsModule]
     });
     fixture = TestBed.createComponent(TodoDetailComponent);
     component = fixture.componentInstance;
