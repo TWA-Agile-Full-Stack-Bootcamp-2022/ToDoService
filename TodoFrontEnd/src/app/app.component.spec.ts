@@ -6,11 +6,12 @@ import { AppComponent } from './app.component';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { By } from '@angular/platform-browser';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { CommonModule } from '@angular/common';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [RouterTestingModule.withRoutes(routes)],
-    declarations: [AppComponent]
+    declarations: [AppComponent, TodoListComponent, TodoDetailComponent]
   }).compileComponents());
 
   it('should create the app', () => {
