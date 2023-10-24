@@ -28,4 +28,8 @@ export class TodoHttpService {
     return this.http.get<ToDoItem>(`https://localhost:5001/ToDoItem/${id}`);
   }
 
+  public deleteById(id: number) {
+    return this.http.delete(`https://localhost:5001/ToDoItem?id=${id}`);
+  }
+
 }
